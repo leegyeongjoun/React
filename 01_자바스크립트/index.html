@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 리액트 -->
+    <!-- 1.react.js:웹사용 일부또는 간단한 제작사용-->
+    <!-- 2.Creat-React-App: CRA 프로젝트 단위-->
+    <!-- -git-bash, github, 배포 -->
+    <!-- -jsx, Axios, node.js, router, redux... -->
+    <!-- 3.vue.js -->
+    <style>
+        table{border: 5px solid skyblue; border-collapse: collapse; width: 1000px; margin: 0 auto;}
+        th{border: 1px solid skyblue; }
+        td{border: 1px solid skyblue; padding: 5px 20px;}
+        h1{text-align: center; font-size: 50px;}
+        body> div> div{text-align: center;}
+        body{margin-bottom: 100px;}
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h1 class="tit1"></h1>
+        <h2 class="tit2"></h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>국어</th>
+                    <th>영어</th>
+                    <th>수학</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+        <hr/>
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>전화</th>
+                    <th>이메일</th>
+                </tr>
+            </thead>
+            <tbody id="tbody2">
+
+            </tbody>
+        </table>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>전화</th>
+                    <th>국어</th>
+                    <th>영어</th>
+                    <th>수학</th>
+                    <th>총점</th>
+                    <th>평균</th>
+                </tr>
+            </thead>
+            <tbody id="tbody3">
+
+            </tbody>
+        </table>
+        <hr/>
+        <h1>버튼 등록 이벤트 리스너</h1>
+        <div>
+            <button id="btn1" onclick="food()">버튼1</button>
+            <button id="btn2">버튼2</button>
+            <button id="btn3">버튼3</button>
+            <a href="#" id="btn4">버튼4</a>
+            <a href="javascript:void(0)" id="btn5">버튼5</a>
+            <a href="javascript:" id="btn6">버튼6</a>
+        </div>
+    </div>
+
+    <script type="module">
+        //es5 
+        // 가변변수 (var) : 재선언가능, 재사용가능, 값이 바뀌는 변수
+        // var a = 5;
+        // var b = 6;
+        // var c = a+b;
+        // //console.log('a+b='+ c);
+
+        // var a = 10;
+        // var b = 7;
+        // var c = a*b;
+        // console.log('a*b='+ c);
+
+        //es6
+        //가변변수 (let) : 재선언 불가능, 재사용 가능, 값이 바뀌는 변수
+
+        // let a = 5;
+        // let b = 6;
+        // let c = a+b;
+        // //console.log('a+b='+ c);
+        // 재사용가능
+        // a = 10;
+        // b = 7;
+        // c = a*b;
+        // console.log('a*b='+ c);
+
+        //불변변수 (const) : 재선언 불가능, 재사용 불가능, 한번 정해지면 값 바뀌지 않는 상수 선언과 동시 값 대입 시켜야함
+        let a = 5;
+        let b = 6;
+        let c = a+b;
+        //console.log('a+b='+ c);
+
+        a = 10;
+        b = 7;
+        c = a*b;
+        console.log('a*b='+ c);
+
+        const h=5;
+        //h=5;
+        console.log(h);
+
+        //템플릿 숫자 문자 변수
+        //문자열 연결 연산자
+        let year = 2023;
+        // 문자와 숫자를 연결할 때 + 사용
+        // const tit = '리액트'+ year +'년도';
+        // 템프럴 리터럴은 `` 벡틱을 사용하고 변수를 불러올 때에는 ${변수이름}을 작성하면 된다.
+        const tit = `리액트 ${year} 년도`;
+        console.log(tit);
+
+        //삼항 연산자
+        let jumsoo = 90;
+        // 콜론기준 true 합격 false 불합격
+        let pan = jumsoo > 80 ? '합격' : '불합격';
+
+        const tit2 = document.querySelector('.tit2');
+        tit2.innerHTML=pan;
+
+        //객체 지정 배열 반복문
+        //{}객체 속성 : 속성값
+        //[]배열
+        const  sungjuk = [
+            {번호: 1, 이름: '이경준', 국어: 100, 영어: 99, 수학:98},        
+            {번호: 2, 이름: '유준우', 국어: 80, 영어: 100, 수학:50},        
+            {번호: 3, 이름: '고가연', 국어: 90, 영어: 55, 수학:100},        
+            {번호: 4, 이름: '양온유', 국어: 60, 영어: 70, 수학:99},        
+            {번호: 5, 이름: '강승현', 국어: 70, 영어: 90, 수학:98},        
+            {번호: 6, 이름: '김지오', 국어: 99, 영어: 89, 수학:70},        
+        ];
+
+        //console.log(sungjuk);
+        // for(let i=0; i<sungjuk.length; i++){
+        //     console.log(sungjuk[i].번호, sungjuk[i].이름, sungjuk[i].국어, sungjuk[i].영어, sungjuk[i].수학);
+        // }
+        let output = ''; //출력 할 내용 보관 변수
+
+        const tbody = document.getElementById('tbody');
+        // for(let i=0; i<sungjuk.length; i++){
+        //     output += `<tr>`;
+        //     output += `<td>${sungjuk[i].번호}</td>`;
+        //     output += `<td>${sungjuk[i].이름}</td>`;
+        //     output += `<td>${sungjuk[i].국어}</td>`;
+        //     output += `<td>${sungjuk[i].영어}</td>`;
+        //     output += `<td>${sungjuk[i].수학}</td>`;
+        //     output += `</tr>`;
+        // }
+
+        // forEach문
+        // sungjuk.forEach(function(item){
+        //     output += `<tr>`;
+        //     output += `<td>${item.번호}</td>`;
+        //     output += `<td>${item.이름}</td>`;
+        //     output += `<td>${item.국어}</td>`;
+        //     output += `<td>${item.영어}</td>`;
+        //     output += `<td>${item.수학}</td>`;
+        //     output += `</tr>`;
+        // });
+
+        sungjuk.map(function(item, idx, arr){
+            output += `<tr>`;
+            output += `<td>${item.번호}</td>`;
+            output += `<td>${item.이름}</td>`;
+            output += `<td>${item.국어}</td>`;
+            output += `<td>${item.영어}</td>`;
+            output += `<td>${item.수학}</td>`;
+            output += `</tr>`;
+        })
+
+        tbody.innerHTML = output;
+
+        let output2 = '';
+        const tbody2 = document.getElementById('tbody2');
+        const phone=[
+            {번호:1, 이름:'조지현', 전화번호: '010-4494-9814', 이메일: 'cjh7652@hanmial.net'},
+            {번호:2, 이름:'유준우', 전화번호: '010-4494-9815', 이메일: 'junnu@hanmial.net'},
+            {번호:3, 이름:'고가연', 전화번호: '010-4494-9714', 이메일: 'c421@hanmial.net'},
+            {번호:4, 이름:'양온유', 전화번호: '010-4494-9214', 이메일: 'cjh73312652@hanmial.net'},
+            {번호:5, 이름:'강승현', 전화번호: '010-4494-1814', 이메일: 'cjh74214652@hanmial.net'},
+            {번호:6, 이름:'김지오', 전화번호: '010-4494-5814', 이메일: 'c421421jh7652@hanmial.net'},
+        ]
+        phone.map(function(item, idx, arr){
+            output2 += `<tr>`;
+            output2 += `<td>${item.번호}</td>`;
+            output2 += `<td>${item.이름}</td>`;
+            output2 += `<td>${item.전화번호}</td>`;
+            output2 += `<td>${item.이메일}</td>`;
+            output2 += `</tr>`;
+            // console.log(item);
+            // console.log(idx);
+            // console.log(arr);
+        })
+
+        tbody2.innerHTML = output2;
+
+
+        //배열 병합
+        const arr1=['1학년', '2학년'];
+        const arr2=['3학년', '4학년'];
+
+        //es5 concat();
+        const arr3 = [].concat(arr1, arr2);
+        console.log(arr3);
+        console.log('arr1[]'+ arr1);
+        console.log('arr2[]'+ arr2);
+        console.log('arr3[]'+ arr3);
+
+        //es6 ...전개연산자;
+        const a1 = ['1학년', '2학년'];
+        const a2 = ['3학년', '4학년'];
+        const a3 = [...a1, ...a2]
+
+        console.log(a3);
+
+
+        const obj1= [...sungjuk, ...phone];
+        console.log(obj1);
+
+        // 내가 원하는 정보들만 가져오고 싶을 때
+        sungjuk.map(function(item, index, array){
+            console.log('phone[index]', phone[index].번호, phone[index].이름, phone[index].전화번호, phone[index].이메일, item.국어, item.영어, item.수학);
+        });
+
+        // 배열에 데이터: 병합
+        // let grade=[];
+        // for(let i=0; i<6; i++){
+        //     grade[i]={번호:phone[i].번호, 이름:phone[i].이름, 전화번호:phone[i].전화번호, 이메일:phone[i].이메일, 국어: sungjuk[i].국어, 영어:sungjuk[i].영어, 수학:sungjuk[i].수학, 총점:sungjuk[i].국어+sungjuk[i].영어+sungjuk[i].수학, 평균: Math.round((sungjuk[i].국어+sungjuk[i].영어+sungjuk[i].수학)/3)};
+        // }
+        // console.log([...grade]);
+
+        //비구조화할당(구조분할할당)
+        let grade=[];
+        for(let i=0; i<6; i++){
+            let {번호, 이름, 전화번호, 이메일} = phone[i];
+            let {국어, 영어, 수학} = sungjuk[i];
+            grade[i]={번호: 번호, 이름: 이름, 전화번호: 전화번호, 국어: 국어, 영어: 영어, 수학: 수학, 총점:국어+영어+ 수학, 평균: Math.round((국어+영어+수학)/3)};
+        }
+        console.log([...grade]);
+
+        let txt = '';
+        const tbody3 = document.getElementById('tbody3');
+        for(let i=0; i<grade.length; i++){
+            let {번호, 이름, 전화번호, 국어, 영어, 수학, 총점, 평균} = grade[i];
+
+            txt += `<tr>`;
+            txt += `<td>${번호}</td>`;
+            txt += `<td>${이름}</td>`;
+            txt += `<td>${전화번호}</td>`;
+            txt += `<td>${국어}</td>`;
+            txt += `<td>${영어}</td>`;
+            txt += `<td>${수학}</td>`;
+            txt += `<td>${총점}</td>`;
+            txt += `<td>${평균}</td>`;
+            txt += `</tr>`;
+        }
+        tbody3.innerHTML = txt;
+
+
+        //리턴문, 화살표 함수(Arrow Function() => {})
+        fn1(1);
+        function fn1(pa){
+            console.log('선언적 함수' + pa);
+        }
+        fn1(2);
+        
+       
+        let fn2=function(pa){
+            console.log('익명함수' + pa);
+        }
+        fn2(1);  //함수이름이 없을 때는 밑에서 불러줘야한다. 익명함수는 이름 아래에서만 실행 가능
+
+        //화살표함수
+        // let fn3 = (z) => {
+        //     console.log('화살표함수는 익명함수다. function만 괄호 () 뒤로 보내면서 화살표로 변경사용한다.' + z)
+        // }
+        // fn3(5);
+        
+        //매개변수가 1개인 경우만 괄호를 생략할 수 있다.
+        //매개변수가 2개 이상인 경우 괄호를 생략하면 안된다.
+        //let fn3 = (x,y) => {} 안에 매개변수가 2개면 무조건 괄호가 있어야한다.
+        //let fn3 = (x) => 매개변수가 1개면 괄호가 없어도된다
+        //let fn3 = x => 한줄로 끝내려면 괄호 작성 안해도 된다.
+        let fn3 = z => console.log('hi'+ z);
+        fn3(7);
+
+        //버튼등록
+        const food = () => {
+            alert('btn1 클릭 이벤트 확인 경고창!!!');
+        };
+        
+        const btn2 = document.getElementById('btn2');
+        btn2.onclick=() => {
+            alert('btn2 클릭 이벤트 확인 경고창~~~~')
+        };
+
+        const btn3 = document.getElementById('btn3');
+
+        btn3.addEventListener('click', ()=>{
+            alert('bnt3 클릭 이벤트 확인 경고창#########')
+        });
+
+        const btn4 = document.getElementById('btn4');
+        btn4.addEventListener('click',event => {
+            event.preventDefault();
+            alert('bnt4 클릭 이벤트 확인 경고창$$$$$$$$$')
+        });
+
+        const btn5 = document.getElementById('btn5');
+        btn5.addEventListener('click', () => {
+            alert('bnt5 클릭 이벤트 확인 경고창%%%%%%%%')
+        });
+
+        const btn6 = document.getElementById('btn6');
+        btn5.addEventListener('click', () => {
+            alert('bnt6 클릭 이벤트 확인 경고창^^^^^^^')
+        });
+
+        //모듈사용
+        //가져오기 fileo1.js
+        //임포트 import
+        //구문 import abc(변수명) from './fileo1'(js를 작성 안해도 됨);
+        //script에 type="module"을 작성 해줘야 함
+
+
+
+        //클래스
+        //객체 => 발전 형태 함수
+
+        const obj = {
+            init: function(){
+                this.section1();
+                this.section2();
+            },
+            section1:function(){
+
+            },
+            section2:function(){
+
+            }
+        }
+        obj.init();
+
+        //리액트 
+        class obj3 {
+            init(){
+                this.section1();
+                this.section2();
+            }
+            section1(){
+
+            }
+            section2(){
+                
+            }
+        }
+        const newObj3 = new obj3(); // 꼭 new를 써줘야 함
+        newObj3.init();
+    </script> 
+</body>
+</html>
